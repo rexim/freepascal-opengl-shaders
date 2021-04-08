@@ -93,7 +93,7 @@ var
         '    float aspect = resolution.y / resolution.x;'#10 +
         '    float x = float(gl_VertexID & 1);'#10 +
         '    float y = float((gl_VertexID >> 1) & 1);'#10 +
-        '    gl_Position = vec4(x * aspect - 0.5, y - 0.5, 0.0, 1.0);'#10 +
+        '    gl_Position = vec4((x - 0.5) * aspect, y - 0.5, 0.0, 1.0);'#10 +
         '    uv = vec2(x, y);'#10 +
         '}'#10 +
             '';
