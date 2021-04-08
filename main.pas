@@ -84,7 +84,6 @@ var
     VertexShaderSource : PChar =
         '#version 300 es'#10 +
         'precision mediump float;'#10 +
-        'uniform int vertex_count;'#10 +
         'uniform vec2 resolution;'#10 +
         ''#10 +
         'out vec2 uv;'#10 +
@@ -117,7 +116,6 @@ var
             '';
     Shaders: array [0..1] of GLuint;
     ShaderProgram: GLuint;
-    UniformVertexCount: GLint;
 
 procedure OnReshape(WindowWidth, WindowHeight: LongInt); cdecl;
 var
@@ -178,11 +176,9 @@ begin
     else
         WriteLn('ERROR: Failed to link the shader program');
 
-    UniformVertexCount := glGetUniformLocation(ShaderProgram, 'vertex_count');
     UniformTime := glGetUniformLocation(ShaderProgram, 'time');
     UniformResolution := glGetUniformLocation(ShaderProgram, 'resolution');
 
-    glUniform1i(UniformVertexCount, CIRCLE_VERTEX_COUNT);
     glUniform1f(UniformTime, Time);
     glUniform2f(UniformResolution, Single(SCREEN_WIDTH), Single(SCREEN_HEIGHT));
 
